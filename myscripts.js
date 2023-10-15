@@ -45,7 +45,7 @@ function game() {
     computerScore = 0;
     drawScore = 0;
     for (let i = 0; i < 5 ; i++) {
-            playRound(prompt(),getComputerChoice()); {
+            playRound(prompt("Make your choice"),getComputerChoice()); {
                 if (win) {
                     playerScore += 1,
                     console.log(`Player Score : ${playerScore}, Computer Score ${computerScore}, Draw Score ${drawScore}`); 
