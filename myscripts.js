@@ -48,12 +48,12 @@ function game() {
             playRound(prompt("Make your choice"),getComputerChoice()); {
                 if (win) {
                     playerScore += 1,
-                    console.log(`Player Score : ${playerScore}, Computer Score ${computerScore}, Draw Score ${drawScore}`); 
+                    console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`); 
                 } else if (draw) {
                     drawScore += 1,
-                    console.log(`Player Score : ${playerScore}, Computer Score ${computerScore}, Draw Score ${drawScore}`);
+                    console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
                 } else {computerScore += 1,
-                    console.log(`Player Score : ${playerScore}, Computer Score ${computerScore}, Draw Score ${drawScore}`);
+                    console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
             };
         }
     } if (playerScore > computerScore) {
