@@ -4,7 +4,7 @@ fr :
 
 Le projet pierre, feuille, ciseaux est le troisième projet du parcours Foundations courses de la plateforme The Odin Project. 
 
-L'objectif étant d'écrire un programme en JavaScript permettant de jouer au célèbre jeu "pierre feuille ciseaux". 
+L'objectif étant d'écrire un programme en JavaScript permettant de jouer au célèbre jeu "pierre feuille ciseaux". Le projet intégrera par la suite des fonctionnalités UI.
 
 en : 
 
