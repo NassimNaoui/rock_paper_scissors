@@ -9,6 +9,7 @@ function getComputerChoice() {
     }
 }
 
+
 function playRound (playerSelection, computerSelection) {
     win = ''
     draw = ''
@@ -44,8 +45,7 @@ function game() {
     playerScore = 0;
     computerScore = 0;
     drawScore = 0;
-    for (let i = 0; i < 5 ; i++) {
-            playRound(prompt("Make your choice"),getComputerChoice()); {
+            playRound(playerSelection,getComputerChoice()); {
                 if (win) {
                     playerScore += 1,
                     console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`); 
@@ -56,7 +56,7 @@ function game() {
                     console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
             };
         }
-    } if (playerScore > computerScore) {
+    if (playerScore > computerScore) {
         console.log("You won the game !")
     } else if (computerScore > playerScore) {
         console.log("You lose !")
@@ -65,5 +65,12 @@ function game() {
     }
 }
 
-game()
+const monBouton = document.querySelectorAll(".option");
 
+
+monBouton.forEach(function(bouton) {
+    bouton.addEventListener("click", function() {
+        const playerSelection = bouton.textContent;
+        playRound(playerSelection, getComputerChoice());
+    });
+})
