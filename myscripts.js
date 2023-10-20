@@ -16,28 +16,23 @@ function playRound (playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        console.log(`Le choix de l'ordi est :  ${computerSelection}`),
-        console.log(`You win ! ${playerSelection} beats ${computerSelection}`),
         win = true;
+        return (`Le choix de l'ordi est : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
     }
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        console.log(`Le choix de l'ordi est :  ${computerSelection}`),
-        console.log(`You win ! ${playerSelection} beats ${computerSelection}`),
-        win = true;
+        win = true
+        return (`Le choix de l'ordi est : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
     }
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        console.log(`Le choix de l'ordi est :  ${computerSelection}`),
-        console.log(`You win ! ${playerSelection} beats ${computerSelection}`)
-        win = true;
+        win = true
+        return (`Le choix de l'ordi est : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
     } 
     else if (playerSelection === computerSelection) {
-        console.log(`Le choix de l'ordi est :  ${computerSelection}`),
-        console.log("It's a Draw !"),
-        draw = true;
+        draw = true
+        return (`Le choix de l'ordi est : ${computerSelection}. It's a Draw !`);
     }
     else {
-        console.log(`Le choix de l'ordi est :  ${computerSelection}`),
-        console.log(`You lose ! ${computerSelection} beats ${playerSelection}`);
+        return (`Le choix de l'ordi est : ${computerSelection}. You lose ! ${computerSelection} beats ${playerSelection}`);
     }
 }
 
@@ -47,12 +42,12 @@ function game() {
     drawScore = 0;
             playRound(playerSelection,getComputerChoice()); {
                 if (win) {
-                    playerScore += 1,
+                    playerScore ++,
                     console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`); 
                 } else if (draw) {
-                    drawScore += 1,
+                    drawScore ++,
                     console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
-                } else {computerScore += 1,
+                } else {computerScore ++,
                     console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
             };
         }
@@ -71,6 +66,11 @@ const monBouton = document.querySelectorAll(".option");
 monBouton.forEach(function(bouton) {
     bouton.addEventListener("click", function() {
         const playerSelection = bouton.textContent;
-        playRound(playerSelection, getComputerChoice());
-    });
+        const result = playRound(playerSelection, getComputerChoice());
+        const container = document.querySelector('body');
+        const content = document.createElement('div');
+        content.classList.add('text');
+        content.textContent = result;
+        container.appendChild(content);
+    }); 
 })
