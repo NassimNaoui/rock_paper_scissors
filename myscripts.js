@@ -13,64 +13,72 @@ function getComputerChoice() {
 function playRound (playerSelection, computerSelection) {
     win = ''
     draw = ''
+    lose = ''
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
-    if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        win = true;
-        return (`Le choix de l'ordi est : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
-    }
-    else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        win = true
-        return (`Le choix de l'ordi est : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
-    }
-    else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        win = true
-        return (`Le choix de l'ordi est : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
-    } 
-    else if (playerSelection === computerSelection) {
-        draw = true
-        return (`Le choix de l'ordi est : ${computerSelection}. It's a Draw !`);
-    }
-    else {
-        return (`Le choix de l'ordi est : ${computerSelection}. You lose ! ${computerSelection} beats ${playerSelection}`);
-    }
-}
-
-function game() { 
-    playerScore = 0;
-    computerScore = 0;
-    drawScore = 0;
-            playRound(playerSelection,getComputerChoice()); {
-                if (win) {
-                    playerScore ++,
-                    console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`); 
-                } else if (draw) {
-                    drawScore ++,
-                    console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
-                } else {computerScore ++,
-                    console.log(`Player Score : ${playerScore}, Computer Score : ${computerScore}, Draw Score : ${drawScore}`);
-            };
+        if (playerSelection === 'rock' && computerSelection === 'scissors') {
+            win = true
+            return (`The computer's selection is : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
         }
-    if (playerScore > computerScore) {
-        console.log("You won the game !")
-    } else if (computerScore > playerScore) {
-        console.log("You lose !")
-    } else { console.log("Nobody won !")
-
-    }
+        else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+            win = true
+            return (`The computer's selection is : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
+        }
+        else if (playerSelection === 'paper' && computerSelection === 'rock') {
+            win = true
+            return (`The computer's selection is : ${computerSelection}. You win ! ${playerSelection} beats ${computerSelection}`);
+        } 
+        else if (playerSelection === computerSelection) {
+            draw = true
+            return (`The computer's selection is : ${computerSelection}. It's a Draw !`);
+        }
+        else { 
+            lose = true
+            return (`The computer's selection is : ${computerSelection}. You lose ! ${computerSelection} beats ${playerSelection}`);
+        }
 }
 
 const monBouton = document.querySelectorAll(".option");
+const container = document.getElementById('result');
+const content = document.createElement('div');
+const contentResult = document.createElement('div');
 
+var playerScore = 0;
+var computerScore = 0;
+var drawScore = 0;
 
 monBouton.forEach(function(bouton) {
     bouton.addEventListener("click", function() {
         const playerSelection = bouton.textContent;
         const result = playRound(playerSelection, getComputerChoice());
-        const container = document.querySelector('body');
-        const content = document.createElement('div');
-        content.classList.add('text');
-        content.textContent = result;
-        container.appendChild(content);
-    }); 
+        if (win) {
+            playerScore ++
+            document.getElementById('player-score').textContent = playerScore
+            content.classList.add('text');
+            content.textContent = result;
+            container.appendChild(content)
+                if (playerScore === 5) {
+                    contentResult.classList.add('text');
+                    contentResult.textContent = 'You won the game !';
+                    container.appendChild(contentResult)
+                };
+    } else if (lose) {
+            computerScore ++
+            document.getElementById('computer-score').textContent = computerScore
+            content.classList.add('text');
+            content.textContent = result;
+            container.appendChild(content);
+                if (computerScore === 5) {
+                    contentResult.classList.add('text');
+                    contentResult.textContent = 'You lose the game !';
+                    container.appendChild(contentResult)
+                };
+    } else {
+            content.classList.add('text');
+            content.textContent = result;
+            container.appendChild(content)
+    }});
 })
+
+
+
